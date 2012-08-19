@@ -115,3 +115,7 @@ post '/' do
 
   result.to_json
 end
+
+not_found do
+  'eff off, ok?'
+end

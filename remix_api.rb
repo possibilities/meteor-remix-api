@@ -90,7 +90,7 @@ class BranchRemixer
     
 end
 
-post '/' do
+get '/' do
   content_type :json
 
   puts 

@@ -65,7 +65,7 @@ class BranchRemixer
       unless File.exists?(@root_path)
         `mkdir -p #{@root_path}`
         Dir.chdir(@root_path)
-        p `git clone https://github.com/meteor-remix/meteor`
+        p `git clone git@github.com:meteor-remix/meteor.git`
 
         Dir.chdir(@meteor_path)
         p `git remote add upstream https://github.com/meteor/meteor`

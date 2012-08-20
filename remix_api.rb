@@ -12,7 +12,7 @@ class BranchRemixer
     @original_path = Dir.pwd
   end
   
-  def bump_it!
+  def remix!
     prepare
     update
 
@@ -103,7 +103,7 @@ post '/' do
   else
 
     branches = raw_branches.split(',').sort()
-    branch = BranchRemixer.new(branches).bump_it!
+    branch = BranchRemixer.new(branches).remix!
     
     {
       success: 'Your branches have been remixed!',

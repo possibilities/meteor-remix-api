@@ -94,7 +94,7 @@ class BranchRemixer
     
 end
 
-get '/' do
+post '/' do
   content_type :json
 
   raw_branches = params[:branches]

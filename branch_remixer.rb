@@ -1,6 +1,3 @@
-require 'sinatra'
-require 'sinatra/reloader' if development?
-require 'json'
 require 'active_support/all'
 
 class BranchRemixer
@@ -47,7 +44,7 @@ class BranchRemixer
     def remix_branches
       @upstream_branches ||= begin
         origin_branches = branches_for_origin('origin')
-        origin_branches.select { |name| name =~ /^remix\.\d{8}\.[\d]{4}\.([\w-_]+,?)+/ }
+        origin_branches.select { |name| name =~ /^remix\.\d{8}\.[\d]{4}\.([\w_-]+,?)+/ }
       end
     end
     

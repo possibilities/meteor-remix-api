@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'json'
 require 'active_support/all'
+require_relative 'branch_remixer'
 
 post '/' do
   content_type :json

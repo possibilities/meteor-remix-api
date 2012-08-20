@@ -16,8 +16,12 @@ class BranchRemixer
     Dir.chdir(@meteor_path)
 
     ensure_all_branches_exist_upstream
-    branch_name = "remix.#{Time.now.utc.to_i}.#{@branches.join(',')}"
-    `git checkout -b #{branch_name} master`
+    branch_name = "remix-#{@branches.join(',')}"
+
+    `git checkout #{branch_name} master`
+    if $?.exitstatus == 1
+      `git checkout -b #{branch_name} master`
+    end
 
     @branches.each do |branch|
       `git merge upstream/#{branch} -m'merging #{branch}'`

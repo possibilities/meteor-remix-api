@@ -97,9 +97,6 @@ end
 get '/' do
   content_type :json
 
-  puts 
-  puts 
-
   raw_branches = params[:branches]
   result = if raw_branches.blank?
     { error: 'You have to specify some branches to remix!' }

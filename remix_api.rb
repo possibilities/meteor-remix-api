@@ -14,6 +14,8 @@ class BranchRemixer
   
   def bump_it!
     prepare
+    update
+
     Dir.chdir(@meteor_path)
 
     ensure_all_branches_exist_upstream
@@ -64,15 +66,16 @@ class BranchRemixer
     def prepare
       unless File.exists?(@meteor_path)
         `mkdir -p #{@root_path}`
-        p @root_path
-        Dir.chdir(@root_path)
-        p `git clone git@github.com:meteor-remix/meteor.git`
 
-        p @meteor_path
+        Dir.chdir(@root_path)
+        `git clone git@github.com:meteor-remix/meteor.git`
+
         Dir.chdir(@meteor_path)
-        p `git remote add upstream https://github.com/meteor/meteor`
+        `git remote add upstream https://github.com/meteor/meteor`
       end
-      
+    end
+
+    def update
       Dir.chdir(@meteor_path)
       `git checkout master`
       `git fetch upstream`
